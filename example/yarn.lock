@@ -1947,20 +1947,10 @@
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.2.tgz#d291c6a4e97989b5c61d9acf396ae4fe133a718d"
   integrity sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==
 
-"@zareanmasoud/react-native-accessibility-service@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@zareanmasoud/react-native-accessibility-service/-/react-native-accessibility-service-1.0.0.tgz#6ad9411f8f37e2b9990b8fa21dee5549093385ad"
-  integrity sha512-oYKdr/8DIfKa3H74NXrZbiqq8sp0s7tkyLvKSa8X47I7XRW6qVHZZhS7pt4KB5J24Q8D/u8qcp5cyX1z/7SC1g==
-  dependencies:
-    NativeModules "link:../../../../../Library/Caches/Yarn/v6/npm-@zareanmasoud-react-native-accessibility-service-1.0.0-6ad9411f8f37e2b9990b8fa21dee5549093385ad-integrity/node_modules/@zareanmasoud"
-
-"NativeModules@link:../":
-  version "0.0.0"
-  uid ""
-
-"NativeModules@link:../..":
-  version "0.0.0"
-  uid ""
+"@zareanmasoud/react-native-accessibility-service@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@zareanmasoud/react-native-accessibility-service/-/react-native-accessibility-service-0.0.1.tgz#4f6db1c22ab718fdf79e33e8119652cb516a3da0"
+  integrity sha512-wHk6+e9A2L6J6kLdDR3M3NH/NBENqeloiFo1YXhFVggpE9sWgC9yxkf0XFVmcC12zXx0V8QHc6A8BHhbi99Rbw==
 
 abab@^2.0.0:
   version "2.0.3"

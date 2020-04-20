@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -23,8 +23,15 @@ import {
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import AccessibilityService from '@zareanmasoud/react-native-accessibility-service';
 
 const App: () => React$Node = () => {
+  useEffect(() => {
+    AccessibilityService.sampleMethod('Testing', 123, message => {
+      alert(message);
+    });
+  }, []);
+
   return (
     <>
       <StatusBar barStyle="dark-content" />
