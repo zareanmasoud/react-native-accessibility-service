@@ -1,12 +1,9 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
  * @format
  * @flow strict-local
  */
 
-import React, {useEffect} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -14,22 +11,33 @@ import {
   View,
   Text,
   StatusBar,
+  NativeEventEmitter,
 } from 'react-native';
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import {Colors, Header, LearnMoreLinks} from './src/FirstScreen';
 import AccessibilityService from '@zareanmasoud/react-native-accessibility-service';
 
 const App: () => React$Node = () => {
+  let eventEmitterListener = useRef(null);
+  let [message, setMessage] = useState('not connected to nativeModule');
+
   useEffect(() => {
-    AccessibilityService.sampleMethod('Testing', 123, message => {
-      alert(message);
+    AccessibilityService.sampleMethod('Testing', 123, messageFromModule => {
+      console.log('messageFromModule', messageFromModule);
+      setMessage(messageFromModule);
     });
+
+    const eventEmitter = new NativeEventEmitter(AccessibilityService);
+    eventEmitterListener.current = eventEmitter.addListener(
+      'EventReminder',
+      event => {
+        console.log('event', event);
+      },
+    );
+
+    return () => {
+      eventEmitterListener.current.remove();
+    };
   }, []);
 
   return (
@@ -40,29 +48,20 @@ const App: () => React$Node = () => {
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>
           <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
+          {message === 'not connected to nativeModule' ? null : (
+            <View style={styles.footerContainer}>
+              <Text style={styles.footer}>connected to nativeModule</Text>
             </View>
           )}
           <View style={styles.body}>
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Step One</Text>
               <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
+                Turn on{' '}
+                <Text style={styles.highlight}>
+                  Accessibility option on your device settings
+                </Text>{' '}
+                to grant permission to this app as an accessibility service.
               </Text>
             </View>
             <View style={styles.sectionContainer}>
@@ -83,7 +82,7 @@ const styles = StyleSheet.create({
   scrollView: {
     backgroundColor: Colors.lighter,
   },
-  engine: {
+  footerContainer: {
     position: 'absolute',
     right: 0,
   },
