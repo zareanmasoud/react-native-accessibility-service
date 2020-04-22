@@ -4,10 +4,15 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.Callback;
+import com.facebook.react.bridge.ReactContext;
+import com.facebook.react.modules.core.DeviceEventManagerModule;
+
+import javax.annotation.Nullable;
 
 public class AccessibilityServiceModule extends ReactContextBaseJavaModule {
 
-    private final ReactApplicationContext reactContext;
+    // TODO: should be non-static and final
+    private static ReactApplicationContext reactContext;
 
     public AccessibilityServiceModule(ReactApplicationContext reactContext) {
         super(reactContext);
@@ -21,7 +26,22 @@ public class AccessibilityServiceModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void sampleMethod(String stringArgument, int numberArgument, Callback callback) {
-        // TODO: Implement some actually useful functionality
-        callback.invoke("Received numberArgument: " + numberArgument + " stringArgument: " + stringArgument);
+        callback.invoke("Received number: " + numberArgument + " string: " + stringArgument);
+    }
+
+    // TODO: should be non-static
+    private static void sendEvent(
+            ReactContext reactContext,
+            String eventName,
+            @Nullable String params
+    ) {
+      reactContext
+          .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
+          .emit(eventName, params);
+    }
+
+    // TODO: should be non-static
+    public static void prepareEvent(String params) {
+            sendEvent(reactContext, "EventReminder", params);
     }
 }
