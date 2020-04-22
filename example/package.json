@@ -4,11 +4,12 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
-    "ios": "react-native run-ios",
-    "start": "react-native start --reset-cache",
     "test": "jest",
     "lint": "eslint .",
-    "haul": "haul start"
+    "haul": "haul start",
+    "gradlew-clean": "cd android && ./gradlew clean && cd ..",
+    "rm-nodemodules-install": "rm -rf node_modules && yarn install",
+    "link-package": "yarn link \"@zareanmasoud/react-native-accessibility-service\""
   },
   "dependencies": {
     "@zareanmasoud/react-native-accessibility-service": "^0.0.1",
