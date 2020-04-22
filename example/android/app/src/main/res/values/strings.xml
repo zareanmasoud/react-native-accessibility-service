@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">example</string>
+    <string name="accessibility_service_label">Example Accessibility Demo</string>
+    <string name="accessibility_service_description">By granting permission to this app you can discover example demo app for its implemented accessibility capabilities showcase</string>
 </resources>
