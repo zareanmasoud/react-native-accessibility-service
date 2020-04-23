@@ -1,7 +1,7 @@
 {
   "name": "@zareanmasoud/react-native-accessibility-service",
   "title": "React Native Accessibility Service",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Accessibility Service for React Native",
   "main": "index.js",
   "scripts": {
