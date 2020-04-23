@@ -1,4 +1,4 @@
-package com.reactlibrary;
+package com.zareanmasoud.rnaccessibilityservice;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;

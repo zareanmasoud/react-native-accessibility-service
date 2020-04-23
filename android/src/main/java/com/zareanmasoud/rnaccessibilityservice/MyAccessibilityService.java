@@ -1,4 +1,4 @@
-package com.reactlibrary;
+package com.zareanmasoud.rnaccessibilityservice;
 
 import android.accessibilityservice.AccessibilityService;
 import android.view.accessibility.AccessibilityEvent;

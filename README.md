@@ -47,7 +47,7 @@ Add this in your manifest:
 <application>
   ...
   <service
-    android:name="com.reactlibrary.MyAccessibilityService"
+    android:name="com.zareanmasoud.rnaccessibilityservice.MyAccessibilityService"
     android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
     android:label="@string/accessibility_service_label">
     <intent-filter>
